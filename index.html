@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kieran Kelleher — Finance + CS | Analyst & Operator</title>
+  <meta name="description" content="Kieran Kelleher — Finance + CS at Georgia Tech. I build decision-ready models and automations that turn messy operational data into clarity." />
+  <meta name="theme-color" content="#0b0d10" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kieran Kelleher — Finance + CS" />
+  <meta property="og:description" content="Analyst & operator focused on modeling, automation, and finance/real-estate underwriting." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    /* ------------------------------------------------------------
+       Minimal, typography-forward portfolio inspired by stevenmurley.com
+       (simple top nav, hero + CTAs, sectioned layout, project list/cards)
+       ------------------------------------------------------------ */
+
+    :root{
+      --bg:#0b0d10;
+      --panel:#0f1218;
+      --panel2:#0c0f14;
+      --text:#e9eef7;
+      --muted:#a9b4c4;
+      --muted2:#7f8aa0;
+      --border:rgba(255,255,255,.10);
+      --border2:rgba(255,255,255,.16);
+      --accent:#7dd3fc;   /* light cyan */
+      --accent2:#a78bfa;  /* violet */
+      --shadow: 0 10px 40px rgba(0,0,0,.45);
+      --radius:16px;
+      --radius2:22px;
+      --max: 1080px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(125,211,252,.18), transparent 55%),
+                  radial-gradient(900px 450px at 90% 0%, rgba(167,139,250,.14), transparent 50%),
+                  radial-gradient(900px 700px at 50% 120%, rgba(125,211,252,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.92}
+    .container{max-width:var(--max); margin:0 auto; padding:0 22px}
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,13,16,.70);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      min-width: 190px;
+    }
+    .brand strong{font-size:14px; letter-spacing:.02em}
+    .brand span{font-size:12px; color:var(--muted)}
+    .nav-links{
+      display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav-links a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid transparent;
+      transition: all .2s ease;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color:rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+    }
+    .nav-links a.active{
+      color:var(--text);
+      border-color:rgba(125,211,252,.35);
+      background:rgba(125,211,252,.08);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px; padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:13px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.18)}
+    .btn.primary{
+      border-color: rgba(125,211,252,.50);
+      background: linear-gradient(135deg, rgba(125,211,252,.18), rgba(167,139,250,.14));
+    }
+    .btn.primary:hover{border-color: rgba(125,211,252,.70)}
+    .btn.ghost{
+      border-color:transparent; background:transparent; color:var(--muted);
+    }
+    .btn.ghost:hover{background:rgba(255,255,255,.04); color:var(--text); border-color:rgba(255,255,255,.10)}
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
+      box-shadow:0 0 0 4px rgba(125,211,252,.12);
+      display:inline-block;
+    }
+
+    /* Hero */
+    header.hero{
+      padding:72px 0 34px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap:28px;
+      align-items:start;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .subtitle{
+      margin-top:12px;
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+    .hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px}
+    .chiprow{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px}
+    .chip{
+      padding:7px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .hero-card{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .hero-card h3{
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.02em;
+      color:var(--text);
+    }
+    .kv{
+      display:grid; gap:10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .kv b{color:var(--text); font-weight:600}
+    .kv a{color:var(--text); border-bottom:1px solid rgba(125,211,252,.35)}
+    .kv a:hover{border-bottom-color: rgba(125,211,252,.65)}
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+      margin:28px 0 0;
+    }
+
+    /* Sections */
+    section{
+      padding:48px 0;
+    }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:18px; flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing:-.01em;
+    }
+    .section-head p{
+      margin:0; color:var(--muted);
+      max-width: 65ch;
+      font-size: 13px;
+    }
+
+    .panel{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(15,18,24,.68);
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
+    }
+    .panel.pad{padding:18px}
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+
+    /* Experience timeline */
+    .timeline{display:grid; gap:12px}
+    .role{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .role-top{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .role h3{margin:0; font-size:15px}
+    .role .meta{color:var(--muted); font-size:12px}
+    .role ul{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13px}
+    .role li{margin:6px 0}
+
+    /* Projects */
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .toggle{
+      display:inline-flex;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .toggle button{
+      appearance:none; border:0; background:transparent; color:var(--muted);
+      padding:8px 10px; font-size:12px; cursor:pointer;
+      transition: background .15s ease, color .15s ease;
+    }
+    .toggle button.active{background:rgba(255,255,255,.06); color:var(--text)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+    .card{
+      grid-column: span 6;
+      padding:16px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(125,211,252,.35);
+      background: rgba(255,255,255,.04);
+    }
+    .card h3{margin:0; font-size:15px}
+    .card p{margin:8px 0 0; color:var(--muted); font-size:13px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .tag{
+      font-size:11px; color:var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:6px 8px; border-radius:999px;
+    }
+    .card .metrics{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .metric{
+      font-size:11px;
+      color: rgba(233,238,247,.9);
+      border:1px solid rgba(125,211,252,.22);
+      background: rgba(125,211,252,.06);
+      padding:6px 8px;
+      border-radius:999px;
+    }
+    .linkrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .linkrow a{font-size:12px; color:var(--text); border-bottom:1px solid rgba(255,255,255,.18)}
+    .linkrow a:hover{border-bottom-color: rgba(125,211,252,.6)}
+    .list .card{grid-column: span 12}
+
+    /* Skills */
+    .pillgrid{display:flex; flex-wrap:wrap; gap:8px}
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .skills-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+    }
+    .skillbox{
+      padding:16px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .skillbox h3{
+      margin:0 0 10px;
+      font-size:13px;
+      color: var(--text);
+      letter-spacing:.02em;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    form{display:grid; gap:10px}
+    label{font-size:12px; color:var(--muted)}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus{border-color: rgba(125,211,252,.45)}
+    .small{font-size:12px; color:var(--muted)}
+    footer{
+      padding:28px 0 46px;
+      color:var(--muted2);
+      font-size:12px;
+    }
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr}
+      .card{grid-column: span 12}
+      .skills-grid{grid-template-columns: 1fr}
+      .contact-grid{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .btn, .card{transition:none}
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <strong><span class="dot" aria-hidden="true"></span> Kieran Kelleher</strong>
+        <span>Finance + CS · Analyst & Operator</span>
+      </a>
+
+      <div class="nav-links" role="navigation" aria-label="Primary">
+        <a href="#about" data-nav>About</a>
+        <a href="#experience" data-nav>Experience</a>
+        <a href="#projects" data-nav>Projects</a>
+        <a href="#skills" data-nav>Skills</a>
+        <a href="#contact" data-nav>Contact</a>
+        <a class="btn ghost" href="assets/Kieran_Kelleher_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="container">
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Finance + Computer Science.<br/>I build models and automation that drive decisions.</h1>
+          <p class="subtitle">
+            I'm a Georgia Tech student (Finance major, CS minor) focused on FP&A-style analysis, real-estate underwriting, and building
+            Excel/Python/VBA systems that turn operational data into clear, executive-ready insights.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="assets/Kieran_Kelleher_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+            <a class="btn" href="#contact">Get in Touch</a>
+          </div>
+
+          <div class="chiprow" aria-label="Highlights">
+            <span class="chip">30,000+ hours analyzed</span>
+            <span class="chip">80% faster reporting cycles</span>
+            <span class="chip">$400k AUM fund analyst</span>
+            <span class="chip">$300k annualized revenue scaled</span>
+          </div>
+
+          <div class="divider"></div>
+        </div>
+
+        <aside class="hero-card" aria-label="Quick facts">
+          <h3>At a glance</h3>
+          <div class="kv">
+            <div><b>Location:</b> Atlanta, GA</div>
+            <div><b>Status:</b> U.S. Citizen · Graduating May 2026</div>
+            <div><b>Focus:</b> Financial analysis · Real estate · Automation</div>
+            <div><b>Email:</b> <a href="mailto:kkelleher6@gatech.edu">kkelleher6@gatech.edu</a></div>
+            <div><b>Phone:</b> <a href="tel:+17035054671">703‑505‑4671</a></div>
+            <div><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/kieran-kelleher/" target="_blank" rel="noopener">kieran-kelleher</a></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="small" style="margin:14px 0 0">
+            Open to analyst roles that sit at the intersection of finance, operations, and data.
+          </p>
+        </aside>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="section-head">
+        <div>
+          <h2>About</h2>
+          <p>My work blends finance fundamentals with technical execution: underwriting, variance analysis, dashboards, and automation.</p>
+        </div>
+      </div>
+
+      <div class="panel pad">
+        <div class="two-col">
+          <div>
+            <p style="margin:0; color:var(--muted)">
+              I'm pursuing a BSBA in Finance with a Computer Science minor at Georgia Tech (GPA 3.7). I’m actively pursuing
+              Argus Enterprise and REFM certifications and I enjoy building clean, scalable models that others can actually use.
+            </p>
+            <div class="chiprow" style="margin-top:14px">
+              <span class="chip">DCF + scenario analysis</span>
+              <span class="chip">Capital stack modeling</span>
+              <span class="chip">Utilization & realization</span>
+              <span class="chip">Excel + VBA + Python</span>
+              <span class="chip">PowerBI</span>
+            </div>
+          </div>
+          <div>
+            <p style="margin:0; color:var(--muted)">
+              Recent work includes: underwriting an 80-key hotel acquisition and pitching a 5-year model; building a profitability model
+              across 30,000+ billable hours; and scaling a robotic vending business through multi-year revenue-share agreements.
+            </p>
+            <div class="linkrow">
+              <a href="assets/Kieran_Kelleher_Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+              <a href="assets/Oracle_Cover_Letter.pdf" target="_blank" rel="noopener">Oracle cover letter</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-head">
+        <div>
+          <h2>Experience</h2>
+          <p>Selected roles with measurable outcomes — focused on modeling, operational visibility, and scalable processes.</p>
+        </div>
+      </div>
+
+      <div class="panel pad">
+        <div class="timeline">
+          <div class="role">
+            <div class="role-top">
+              <div>
+                <h3>GTRE Fund Analyst — Georgia Tech Real Estate Club</h3>
+                <div class="meta">Atlanta, GA · Aug 2025 – Present</div>
+              </div>
+            </div>
+            <ul>
+              <li>Selected for Fund I to help manage $400k AUM; perform market + capital markets analysis for asset selection and dispositions.</li>
+              <li>Underwrote and pitched acquisition of an 80-key hotel; built a 5-year operating model and capital stack with a 9.35% stabilized yield-on-cost vs. 6.8% market cap rate; modeled &gt;20% net IRR scenario.</li>
+              <li>Built dynamic DCF stress tests to validate assumptions and sharpen risk/return tradeoffs.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-top">
+              <div>
+                <h3>Financial Analyst Intern — BAMTechnologies</h3>
+                <div class="meta">Arlington, VA · Jun 2025 – Aug 2025</div>
+              </div>
+            </div>
+            <ul>
+              <li>Architected a profitability model analyzing 30,000+ billable hours and benchmarking utilization to identify variance drivers.</li>
+              <li>Built a VBA roll-forward tool removing 100+ manual touchpoints and improving reconciliation reliability.</li>
+              <li>Developed a Python + Excel/VBA reporting suite that transformed month-end execution data and reduced cycle time by ~80%.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-top">
+              <div>
+                <h3>Head of Commercial Strategy & Operations — Distinctive Vending</h3>
+                <div class="meta">Arlington, VA · Aug 2024 – May 2025</div>
+              </div>
+            </div>
+            <ul>
+              <li>Scaled logistics and standardized operating procedures, growing annualized revenue to ~$300k.</li>
+              <li>Structured and reconciled multi-year revenue-share agreements with institutional partners; modeled cash flows to support contract compliance and profitability.</li>
+              <li>Owned end-to-end client onboarding workflows; created financial documentation that supported contract closure and launch.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-top">
+              <div>
+                <h3>Financial Operations Intern — Sweet Robo Solutions</h3>
+                <div class="meta">New York, NY · Jun 2024 – Aug 2024</div>
+              </div>
+            </div>
+            <ul>
+              <li>Designed an automated reconciliation system with rigorous audit trails, cutting manual processing time by ~85%.</li>
+              <li>Built an inventory valuation model to identify consumption inefficiencies and reduce stockouts by ~25%.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-top">
+              <div>
+                <h3>VP of Communications — Alpha Sigma Phi Fraternity</h3>
+                <div class="meta">Atlanta, GA · Apr 2023 – Apr 2024</div>
+              </div>
+            </div>
+            <ul>
+              <li>Managed marketing budgets and secured $5k+ in brand sponsorships through outreach and value-proposition pitching.</li>
+              <li>Served as liaison with university and national leadership; ran communication for a 100+ person organization.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <div>
+          <h2>Projects</h2>
+          <p>Case studies that highlight how I approach messy data, high stakes, and repeatable execution.</p>
+        </div>
+        <div class="toolbar" aria-label="Project view controls">
+          <span>View:</span>
+          <span class="toggle" role="tablist" aria-label="Toggle project layout">
+            <button id="gridBtn" class="active" type="button" role="tab" aria-selected="true">Cards</button>
+            <button id="listBtn" type="button" role="tab" aria-selected="false">List</button>
+          </span>
+        </div>
+      </div>
+
+      <div id="projectGrid" class="grid">
+        <article class="card" aria-label="Project: Profitability model">
+          <h3>T&amp;M Profitability + Utilization Model</h3>
+          <p>
+            Built a profitability model translating 30,000+ hours across ~120 labor categories into utilization/realization rates and
+            variance drivers, enabling executive decisions on staffing and cost recovery.
+          </p>
+          <div class="metrics">
+            <span class="metric">30,000+ hours</span>
+            <span class="metric">120 categories</span>
+            <span class="metric">Executive-ready dashboard</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Excel</span><span class="tag">Variance analysis</span><span class="tag">Utilization</span><span class="tag">Realization</span>
+          </div>
+        </article>
+
+        <article class="card" aria-label="Project: Execution plan automation">
+          <h3>Execution Plan Roll-Forward Automation</h3>
+          <p>
+            Automated month-end execution plan updates for government contracts: standardized burn-rate logic, reduced manual reconciliation,
+            and strengthened FAR-aligned guardrails for T&amp;M funding execution.
+          </p>
+          <div class="metrics">
+            <span class="metric">100+ manual touchpoints removed</span>
+            <span class="metric">Audit-trail friendly</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Excel VBA</span><span class="tag">Controls</span><span class="tag">Process automation</span><span class="tag">T&amp;M</span>
+          </div>
+        </article>
+
+        <article class="card" aria-label="Project: Reporting suite">
+          <h3>Month-End Reporting Suite: Python + Excel/VBA</h3>
+          <p>
+            Built a transformation + charting workflow to convert month-end data into program-level burn-rate reporting, cutting cycle time
+            and improving visibility for leadership.
+          </p>
+          <div class="metrics">
+            <span class="metric">~80% faster cycles</span>
+            <span class="metric">Repeatable reporting</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Excel VBA</span><span class="tag">ETL</span><span class="tag">Dashboards</span>
+          </div>
+        </article>
+
+        <article class="card" aria-label="Project: Hotel underwriting">
+          <h3>Hotel Acquisition Underwriting (80 keys)</h3>
+          <p>
+            Built a 5-year operating model and capital stack for an 80-key hotel acquisition; stress-tested assumptions and pitched the deal
+            with an emphasis on yield-on-cost vs. market cap rate and IRR sensitivity.
+          </p>
+          <div class="metrics">
+            <span class="metric">9.35% YoC</span>
+            <span class="metric">6.8% market cap</span>
+            <span class="metric">&gt;20% net IRR (scenario)</span>
+          </div>
+          <div class="tags">
+            <span class="tag">DCF</span><span class="tag">Capital stack</span><span class="tag">Real estate</span><span class="tag">Sensitivity</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="small" style="margin-top:12px">
+        Want more detail? I can share a short PDF “project brief” for each case study upon request.
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <div>
+          <h2>Skills</h2>
+          <p>Tools I use to analyze, model, automate, and present — with a focus on clarity and repeatability.</p>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skillbox">
+          <h3>Finance & Analytics</h3>
+          <div class="pillgrid">
+            <span class="pill">DCF / NPV</span><span class="pill">IRR / EM</span><span class="pill">Scenario & sensitivity</span>
+            <span class="pill">Variance analysis</span><span class="pill">P&amp;L management</span><span class="pill">Contract burn-rate</span>
+          </div>
+        </div>
+
+        <div class="skillbox">
+          <h3>Tools</h3>
+          <div class="pillgrid">
+            <span class="pill">Excel</span><span class="pill">VBA</span><span class="pill">PowerBI</span><span class="pill">PowerPoint</span>
+            <span class="pill">Argus Enterprise</span><span class="pill">REFM</span><span class="pill">CoStar</span>
+          </div>
+        </div>
+
+        <div class="skillbox">
+          <h3>Programming</h3>
+          <div class="pillgrid">
+            <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Java</span><span class="pill">JavaScript</span>
+            <span class="pill">C++</span><span class="pill">C#</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>If you’re hiring for an analyst role or want to collaborate, send a note — I respond quickly.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="panel pad">
+          <h3 style="margin:0 0 12px; font-size:14px">Send a message</h3>
+          <form id="contactForm">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="What would you like to discuss?" required></textarea>
+            </div>
+            <button class="btn primary" type="submit">Send Message</button>
+            <div class="small">This form opens your email client (no backend needed).</div>
+          </form>
+        </div>
+
+        <div class="panel pad">
+          <h3 style="margin:0 0 12px; font-size:14px">Connect</h3>
+          <div class="kv">
+            <div><b>Email:</b> <a href="mailto:kkelleher6@gatech.edu">kkelleher6@gatech.edu</a></div>
+            <div><b>Phone:</b> <a href="tel:+17035054671">703‑505‑4671</a></div>
+            <div><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/kieran-kelleher/" target="_blank" rel="noopener">linkedin.com/in/kieran-kelleher</a></div>
+            <div><b>Resume:</b> <a href="assets/Kieran_Kelleher_Resume.pdf" target="_blank" rel="noopener">download PDF</a></div>
+            <div><b>Location:</b> Atlanta, Georgia</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 style="margin:16px 0 10px; font-size:14px">Quick links</h3>
+          <div class="linkrow">
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="assets/Oracle_Cover_Letter.pdf" target="_blank" rel="noopener">Cover letter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <div>© <span id="year"></span> Kieran Kelleher</div>
+        <div class="linkrow">
+          <a href="#top">Back to top</a>
+          <a href="assets/Kieran_Kelleher_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <a href="mailto:kkelleher6@gatech.edu?subject=Portfolio%20Inquiry">Email</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Project view toggle
+    const grid = document.getElementById('projectGrid');
+    const gridBtn = document.getElementById('gridBtn');
+    const listBtn = document.getElementById('listBtn');
+
+    function setView(mode){
+      const isList = mode === 'list';
+      grid.classList.toggle('list', isList);
+      gridBtn.classList.toggle('active', !isList);
+      listBtn.classList.toggle('active', isList);
+      gridBtn.setAttribute('aria-selected', String(!isList));
+      listBtn.setAttribute('aria-selected', String(isList));
+      localStorage.setItem('projectView', mode);
+    }
+    gridBtn.addEventListener('click', () => setView('grid'));
+    listBtn.addEventListener('click', () => setView('list'));
+    setView(localStorage.getItem('projectView') || 'grid');
+
+    // Active section highlight in nav
+    const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const id = '#' + entry.target.id;
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0.01 });
+
+    sections.forEach(sec => io.observe(sec));
+
+    // Contact form: opens mail client with prefilled fields
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const email = encodeURIComponent(document.getElementById('email').value.trim());
+      const message = encodeURIComponent(document.getElementById('message').value.trim());
+      const subject = encodeURIComponent('Portfolio inquiry');
+      const body = encodeURIComponent(
+        `Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\n\n${decodeURIComponent(message)}`
+      );
+      window.location.href = `mailto:kkelleher6@gatech.edu?subject=${subject}&body=${body}`;
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
